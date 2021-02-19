@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { AppNavbarComponent } from './nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        AppNavbarComponent,
     ],
     imports: [
         BrowserModule,
-        HttpClientModule,
-        NgbModule
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

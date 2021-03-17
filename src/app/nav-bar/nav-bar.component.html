@@ -6,10 +6,10 @@
     <div class="collapse navbar-collapse" id="appNavbarContent">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a i18n class="nav-link" href="#translation">Translate</a>
+                <a i18n class="nav-link" href="#translation" (click)="showOneCollapsed('#appTranslation')">Translate</a>
             </li>
             <li class="nav-item">
-                <a i18n class="nav-link" href="#saved" (click)="toggleCollapse('#appSavedTexts')">Saved texts</a>
+                <a i18n class="nav-link" href="#saved" (click)="showOneCollapsed('#appSavedTexts')">Saved texts</a>
             </li>
         </ul>
     </div>

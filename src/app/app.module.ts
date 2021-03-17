@@ -3,15 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './nav-bar/nav-bar.component';
+import { AppSavedTexts } from './saved-texts/saved-texts.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         AppComponent,
         AppNavbarComponent,
+        AppSavedTexts,
     ],
     imports: [
         BrowserModule,
         NgbModule,
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

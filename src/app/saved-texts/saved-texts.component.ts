@@ -39,4 +39,7 @@ export class AppSavedTexts {
         this.service.sortColumn = column;
         this.service.sortDirection = direction;
     }
+    loadText(id: string) {
+
+    }
 }

@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let row of rows$ | async">
+            <tr *ngFor="let row of rows$ | async" (dblclick)="loadText">
                 <th scope="rows">{{ row.id }}</th>
                 <td>
                     <ngb-highlight [result]="row.name" [term]="service.searchTerm"></ngb-highlight>

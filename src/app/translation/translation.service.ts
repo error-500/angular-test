@@ -10,33 +10,42 @@ interface apiRequest<URLSearchParams> {
 }
 @Injectable({ providedIn: 'root' })
 export class apiTranslate {
-    private authority = 'translate.googleapis.com';
-    private method = 'GET';
-    private path = '/translate_a/single';
-    private params: apiRequest<URLSearchParams> = {
+    private _authority = 'translate.googleapis.com';
+    private _method = 'GET';
+    private _path = '/translate_a/single';
+    private _params: apiRequest<URLSearchParams> = {
         client: 'gtx',
         sl: 'auto',
         tl: window.navigator.language,
         dt: 't',
-        q: null
+        q: 'текст'
     };
-    constructor(params: apiRequest<URLSearchParams>) {
-        Object.assign(this.params, params);
+    constructor() { }
+    get authority() { return this._authority; }
+    get method() { return this._method; }
+    get path() { return this._path; }
+    get params() { return Object.assign({}, this._params); }
+
+    set params(patch: Partial<apiRequest<URLSearchParams>>) {
+        Object.assign(this._params, patch)
     }
 
-    async translate(text: string | null) {
+    translate(text: string | null) {
         if (text) {
-            this.params.q = encodeURI(text)
+            this.params.q = text;
         }
         const requestUrl = new URL(this.path, `https://${this.authority}${this.path}`);
-        requestUrl.search = this.params.toString();
+        const paramKeys = Object.keys(this.params);
+        const query = paramKeys.map((key) => { return `${key}=${encodeURI(this.params[key])}` })
+        requestUrl.search = query.join('&');
+
         const fetchRequest = new Request(requestUrl.toString(), {
             method: this.method,
-            mode: 'cors',
+            mode: 'no-cors',
             cache: 'no-cache',
         });
 
-        return await fetch(fetchRequest)
+        return fetch(fetchRequest)
             .then(response => response.json())
             .then((data) => {
                 const result: savedText = {
@@ -48,6 +57,7 @@ export class apiTranslate {
                 }
                 return result;
             })
+
 
     }
 }

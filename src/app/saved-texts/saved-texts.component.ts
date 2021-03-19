@@ -40,6 +40,7 @@ export class AppSavedTexts {
         this.service.sortDirection = direction;
     }
     loadText(id: string) {
-
+        const text = JSON.parse(JSON.stringify(this.rows$))
+            .find((item: savedText) => { return item.id === id })
     }
 }

@@ -1,5 +1,5 @@
 export interface savedText {
-    id: number,
+    id: string,
     name: string,
     txtFrom: string,
     txtTo: string,

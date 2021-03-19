@@ -15,7 +15,7 @@ export class textsList {
     }
     save(text: savedText) {
         if (!text.id) {
-            text.id = this.texts.length;
+            text.id = this.texts.length.toString();
         }
         this.texts.push(text);
         const myStore = window.localStorage;
